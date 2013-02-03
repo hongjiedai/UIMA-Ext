@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <implementationName>ru.kfu.itis.cll.uima.consumer.PreprocessingCasConsumer</implementationName>
+  <processingResourceMetaData>
+    <name>PreprocessingCasConsumerDescriptor</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>OutputDirectory</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import location="file:/C:/Documents and Settings/Тест/temp/UIMA-Ext-misis/UIMA.Ext.Commons/src/main/resources/ru/kfu/itis/cll/uima/commons/Commons-TypeSystem.xml"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata</type>
+          <feature>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata:documentRawText</feature>
+          <feature>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata:format</feature>
+          <feature>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata:language</feature>
+        </inputs>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>false</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </processingResourceMetaData>
+  <resourceManagerConfiguration/>
+</casConsumerDescription>
