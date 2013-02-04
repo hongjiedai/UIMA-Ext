@@ -1,8 +1,10 @@
 package ru.kfu.itis.cll.uima.consumer;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -44,7 +46,30 @@ public class PreprocessingCasConsumer extends CasConsumer_ImplBase {
 	      throw new ResourceProcessException(e);
 	    }
 	    FSIterator it = jcas.getAnnotationIndex(MisisDocumentMetadata.type).iterator();
-	    File outFile = null;
+	    if (it.hasNext()) {
+	    	MisisDocumentMetadata fileLoc = (MisisDocumentMetadata) it.next();
+	    	File outFile = new File(mOutputDir, fileLoc.getSourceUri().substring(fileLoc.getSourceUri().lastIndexOf("/")+1) + ".txt");
+	    	
+			
+				FileWriter fw;
+				try {
+					fw = new FileWriter(outFile);
+				
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.write(fileLoc.getSourceUri() + "\r\n");
+					bw.write("language: " + fileLoc.getLanguage() + "\r\n");
+					bw.write("format: " + fileLoc.getFormat() + "\r\n");
+					bw.write("main text:\r\n" + fileLoc.getDocumentRawText());
+					bw.close();
+					fw.close();
+					mDocNum++;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+	    }
+	    /*File outFile = null;
 	    if (it.hasNext()) {
 	    	MisisDocumentMetadata fileLoc = (MisisDocumentMetadata) it.next();
 	    	File inFile;
@@ -70,6 +95,6 @@ public class PreprocessingCasConsumer extends CasConsumer_ImplBase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
+	    */
 	}
 }

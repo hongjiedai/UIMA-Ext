@@ -25,10 +25,7 @@
     <capabilities>
       <capability>
         <inputs>
-          <type>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata</type>
-          <feature>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata:documentRawText</feature>
-          <feature>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata:format</feature>
-          <feature>ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata:language</feature>
+          <type allAnnotatorFeatures="true">ru.kfu.itis.cll.uima.commons.MisisDocumentMetadata</type>
         </inputs>
         <outputs/>
         <languagesSupported/>
